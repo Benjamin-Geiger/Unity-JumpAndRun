@@ -64,6 +64,8 @@ public class Character : MonoBehaviour
         this.characterMovement += this.jumpVelocity * Time.fixedDeltaTime;
         this.characterMovement += inputRightDirection * inputMovement.x * characterSpeed * Time.fixedDeltaTime;
         this.characterMovement += inputForwardDirection * inputMovement.y * characterSpeed * Time.fixedDeltaTime;
+        
+        GetPlatformVelocity();
 
         this.characterMovement *= (1.0f - this.dampening);
 
@@ -105,5 +107,26 @@ public class Character : MonoBehaviour
         }
 
         this.jumpCooldownTimer -= Time.fixedDeltaTime;
+    }
+
+    private void GetPlatformVelocity()
+    {
+        LayerMask mask = LayerMask.GetMask("Platforms");
+        RaycastHit hit;
+        
+        if (Physics.Raycast(transform.position, Vector3.down, out hit, 1.0f, mask))
+        {
+            GameObject obj = hit.collider.gameObject;
+            MovingPlatform platform = obj.GetComponent<MovingPlatform>();
+
+            if (platform != null)
+            {
+                Vector3 platformVelocity = platform.GetVelocity();
+            
+                var combinedMovement = this.characterMovement + platformVelocity * Time.fixedDeltaTime;
+                controller.Move(combinedMovement);
+            }
+            
+        }
     }
 }
