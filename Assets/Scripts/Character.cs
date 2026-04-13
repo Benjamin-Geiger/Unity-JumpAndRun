@@ -7,7 +7,7 @@ using Vector3 = UnityEngine.Vector3;
 public class Character : MonoBehaviour
 {
     
-    //Jump
+    [Header("Jump")]
     private bool isJumping = false;
     private float jumpCooldownTimer;
     private InputAction jumpAction;
@@ -16,7 +16,7 @@ public class Character : MonoBehaviour
     [SerializeField] private float jumpCooldown;
     [SerializeField] private float jumpSpeed;
     
-    //CharacterMovement
+    [Header("Character Movement")]
     private CharacterController controller;
     private InputAction moveAction;
     
@@ -26,26 +26,47 @@ public class Character : MonoBehaviour
     [SerializeField] private float dampening;
     private Vector3 characterMovement;
     
-    //Gravity
+    [Header("Gravity")]
     [SerializeField] private float gravity;
     private Vector3 characterGravity;
+
+    [Header("Animation")]
+    private Animator animator;
     
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         controller = GetComponent<CharacterController>();
+        animator = GetComponent<Animator>();
+        
         moveAction = InputSystem.actions.FindAction("Move");
         jumpAction = InputSystem.actions.FindAction("Jump");
         this.jumpCooldownTimer = 0.0f;
+        
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 
+    // void SetAnimationState()
+    // {
+    //     this.animator.SetBool("isJumping", this.isJumping);
+    // }
+
+    void SetAnimationState(Vector2 inputMovement)
+    {
+        this.animator.SetBool("isJumping", this.isJumping);
+        this.animator.SetBool("isRunning", inputMovement != Vector2.zero);
+        this.animator.SetFloat("movementForward", inputMovement.magnitude);
+    }
 
     private void FixedUpdate()
     {
         this.HandleJumping();
         
         var inputMovement = moveAction.ReadValue<Vector2>();
+        this.SetAnimationState(inputMovement);
+        
         var inputForwardDirection = this.cameraTransform.forward;
         var inputRightDirection = this.cameraTransform.right;
 
@@ -114,7 +135,7 @@ public class Character : MonoBehaviour
         LayerMask mask = LayerMask.GetMask("Platforms");
         RaycastHit hit;
         
-        if (Physics.Raycast(transform.position, Vector3.down, out hit, 1.0f, mask))
+        if (Physics.Raycast(transform.position, Vector3.down, out hit, 0.1f, mask))
         {
             GameObject obj = hit.collider.gameObject;
             MovingPlatform platform = obj.GetComponent<MovingPlatform>();
@@ -122,9 +143,8 @@ public class Character : MonoBehaviour
             if (platform != null)
             {
                 Vector3 platformVelocity = platform.GetVelocity();
-            
-                var combinedMovement = this.characterMovement + platformVelocity * Time.fixedDeltaTime;
-                controller.Move(combinedMovement);
+                
+                controller.Move(platformVelocity *  Time.fixedDeltaTime);
             }
             
         }
