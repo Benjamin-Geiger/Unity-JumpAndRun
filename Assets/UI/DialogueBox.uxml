@@ -1,0 +1,5 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <ui:VisualElement name="Parent" style="flex-grow: 1; background-image: url(&quot;project://database/Assets/Textures/KenneyRPGUI/PNG/buttonLong_brown.png?fileID=2800000&amp;guid=e1b37c399f270ee40b1efce762deb577&amp;type=3#buttonLong_brown&quot;); aspect-ratio: auto; min-height: 0; max-height: 200px; top: auto; bottom: auto; flex-shrink: 0; width: auto; -unity-font-definition: url(&quot;project://database/Packages/com.unity.render-pipelines.core/Runtime/Debugging/Prefabs/Fonts/PerfectDOSVGA437.ttf?fileID=12800000&amp;guid=74a5091d8707f334b9a5c31ef71a64ba&amp;type=3#PerfectDOSVGA437&quot;);">
+        <ui:Label text="Label" style="font-size: 40px;"/>
+    </ui:VisualElement>
+</ui:UXML>

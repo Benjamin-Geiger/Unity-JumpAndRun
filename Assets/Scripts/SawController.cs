@@ -4,6 +4,9 @@ using UnityEngine;
 [RequireComponent (typeof(AudioSource))]
 public class SawController : MonoBehaviour
 {
+    [Header("Damage")] 
+    [SerializeField] private float dps = 25.0f;
+    
     [Header("Spinning")]
     [SerializeField] private float spinSpeed = 300f;
     [SerializeField] private Vector3 spinAxis = Vector3.forward;
@@ -49,6 +52,15 @@ public class SawController : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             SetState(false);
+        }
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            var character = other.gameObject.GetComponentInChildren<Character>();
+            character.InflictDamage(this.dps * Time.fixedDeltaTime);
         }
     }
 

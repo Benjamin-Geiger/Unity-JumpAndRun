@@ -6,6 +6,11 @@ using Vector3 = UnityEngine.Vector3;
 
 public class Character : MonoBehaviour
 {
+    [Header("Player Health")]
+    [SerializeField] private float maxHealth = 100.0f;
+    private float currentHealth;
+    public float GetCurrentHealth() => this.currentHealth;
+    public float GetMaxHealth() => this.maxHealth;
     
     [Header("Jump")]
     private bool isJumping = false;
@@ -42,10 +47,17 @@ public class Character : MonoBehaviour
         
         moveAction = InputSystem.actions.FindAction("Move");
         jumpAction = InputSystem.actions.FindAction("Jump");
+        this.currentHealth = maxHealth;
         this.jumpCooldownTimer = 0.0f;
         
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+    }
+
+    public void InflictDamage(float amount)
+    {
+        this.currentHealth -= amount;
+        this.currentHealth = Mathf.Clamp(this.currentHealth, 0.0f, this.maxHealth);
     }
 
     // void SetAnimationState()
