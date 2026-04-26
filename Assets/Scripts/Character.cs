@@ -24,6 +24,7 @@ public class Character : MonoBehaviour
     [Header("Character Movement")]
     private CharacterController controller;
     private InputAction moveAction;
+    private bool isMoving = false;
     
     [SerializeField] private float characterSpeed;
     [SerializeField] private Transform cameraTransform;
@@ -38,10 +39,20 @@ public class Character : MonoBehaviour
     [Header("Animation")]
     private Animator animator;
     
+    [Header("Character Audio")]
+    [SerializeField] private AudioClip jumpSound;
+    [SerializeField] private AudioClip moveSound;
+    [SerializeField] private AudioClip landingSound;
+    [SerializeField] private AudioSource jumpAudioSource;
+    [SerializeField] private AudioSource moveAudioSource;
+    private bool moveSoundPlaying;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        // audioSource = GetComponent<AudioSource>();
+        // audioSource.playOnAwake = false;
+        
         controller = GetComponent<CharacterController>();
         animator = GetComponent<Animator>();
         
@@ -52,6 +63,16 @@ public class Character : MonoBehaviour
         
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+    }
+    
+    private void Awake()
+    {
+        jumpAudioSource.loop = false;
+        jumpAudioSource.playOnAwake = false;
+        
+        moveAudioSource.clip = this.moveSound;
+        moveAudioSource.loop = true;
+        moveAudioSource.playOnAwake = false;
     }
 
     public void InflictDamage(float amount)
@@ -74,9 +95,11 @@ public class Character : MonoBehaviour
 
     private void FixedUpdate()
     {
+        HandleMovingAudio();
         this.HandleJumping();
         
         var inputMovement = moveAction.ReadValue<Vector2>();
+        isMoving = inputMovement.sqrMagnitude > 0.01f;
         this.SetAnimationState(inputMovement);
         
         var inputForwardDirection = this.cameraTransform.forward;
@@ -103,6 +126,7 @@ public class Character : MonoBehaviour
         this.characterMovement *= (1.0f - this.dampening);
 
         Vector3 characterForward = this.characterMovement;
+        
         characterForward.y = 0.0f;
 
         if (characterForward.sqrMagnitude > 0.0f && characterForward != Vector3.zero)
@@ -113,12 +137,37 @@ public class Character : MonoBehaviour
         this.controller.Move(this.characterMovement);
     }
 
+    void HandleMovingAudio()
+    {
+        bool isGrounded = this.controller.isGrounded;
+        
+        if (isMoving && !isJumping && isGrounded)
+        {
+            if (!moveSoundPlaying)
+            {
+                moveAudioSource.Play();
+                moveSoundPlaying = true;
+            }
+        }
+        else
+        {
+            if (moveSoundPlaying)
+            {
+                moveAudioSource.Stop();
+                moveSoundPlaying = false;
+            }
+        }
+    }
+    
+
     void HandleJumping()
     {
         if (this.controller.isGrounded && this.isJumping && this.jumpCooldownTimer <= 0.0f)
         {
             this.jumpVelocity = Vector3.zero;
             this.isJumping = false;
+            jumpAudioSource.clip = this.landingSound;
+            jumpAudioSource.Play();
         }
 
         if (this.controller.isGrounded && !this.isJumping && this.jumpAction.WasPressedThisFrame())
@@ -128,6 +177,11 @@ public class Character : MonoBehaviour
             this.jumpVelocity.y = this.jumpSpeed;
             this.jumpCooldownTimer = this.jumpCooldown;
             this.isJumping = true;
+            this.isMoving = false;
+            
+            //Audio on Jump
+            jumpAudioSource.clip = this.jumpSound;
+            jumpAudioSource.Play();
         }
 
         if (this.jumpVelocity.y > 0.0f)
