@@ -20,6 +20,7 @@ public class ZombieMovement : MonoBehaviour
     [SerializeField] private AudioClip zombieSound;
     private AudioSource audioSource;
     private bool isDead = false;
+    private bool isAttacking = false;
     
     private void Start()
     {
@@ -34,7 +35,8 @@ public class ZombieMovement : MonoBehaviour
 
     void SetAnimationState()
     {
-        animator.SetBool("Dead", true);
+        animator.SetBool("Dead", isDead);
+        animator.SetBool("Attack", isAttacking);
     }
 
     // private void Squashed()
@@ -61,9 +63,8 @@ public class ZombieMovement : MonoBehaviour
 
     public void OnPlayerStomp()
     {
-        SetAnimationState();
-        audioSource.Play();
         isDead = true;
+        audioSource.Play();
         
         StopCoroutine("WaitAtPosition");
         StartCoroutine(WaitAtPosition());
@@ -76,6 +77,8 @@ public class ZombieMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
+        SetAnimationState();
+        
         if (isWaiting) return;
 
         Vector3 toTarget = targetPosition - transform.position;
@@ -120,5 +123,20 @@ public class ZombieMovement : MonoBehaviour
         StopCoroutine("WaitAtPosition");
         PickNewTarget();
         isWaiting = false;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            var character = other.gameObject.GetComponentInChildren<Character>();
+            character.InflictDamage(25.0f);
+            isAttacking = true;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        isAttacking = false;
     }
 }

@@ -22,22 +22,33 @@ public class UIManager : MonoBehaviour
     [SerializeField] private CanvasGroup gameOverCanvasGroup;
     [SerializeField] private float fadingTIme = 2.0f;
     private bool isFadingInGameOver = false;
+    
+    [Header("Victory Screen")]
+    [SerializeField] private CanvasGroup victoryScreen;
 
-    private IEnumerator FadeInGameOver()
+    private IEnumerator FadeHudElement(CanvasGroup inElement, CanvasGroup outElement)
     {
-        this.isFadingInGameOver = true;
+
+        if (inElement == gameOverCanvasGroup)
+        {
+            this.isFadingInGameOver = true;
+        } 
+        else if (outElement == gameOverCanvasGroup)
+        {
+            this.isFadingInGameOver = false;
+        }
 
         float timer = 0.0f;
         while (timer < this.fadingTIme)
         {
             float percent = timer / this.fadingTIme;
-            this.hudCanvasGroup.alpha = 1.0f - percent;
-            this.gameOverCanvasGroup.alpha = percent;
+            outElement.alpha = 1.0f - percent;
+            inElement.alpha = percent;
             yield return null;
             timer += Time.deltaTime;
         }
-        this.hudCanvasGroup.alpha = 0.0f;
-        this.gameOverCanvasGroup.alpha = 1.0f;
+        outElement.alpha = 0.0f;
+        inElement.alpha = 1.0f;
     }
 
     private void Update()
@@ -47,7 +58,13 @@ public class UIManager : MonoBehaviour
 
         if (healthInPercent <= 0.0f && !this.isFadingInGameOver)
         {
-            this.StartCoroutine(this.FadeInGameOver());
+            this.StartCoroutine(this.FadeHudElement(gameOverCanvasGroup, hudCanvasGroup));
+            statistics.coinCounter = 0;
+            string coinText = $"Coins: {this.statistics.coinCounter}";
+            this.coinCounterText.text = coinText;
+            
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
         }
     }
 
@@ -55,6 +72,29 @@ public class UIManager : MonoBehaviour
     {
         instance = this;
         this.statistics = new PlayerStatistics() {coinCounter = 0};
+    }
+
+    public void OnGameVictory()
+    {
+        StartCoroutine(FadeHudElement(victoryScreen, hudCanvasGroup));
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+    }
+
+    public void HUDonRespawn()
+    {
+        if (isFadingInGameOver)
+        {
+            StartCoroutine(this.FadeHudElement(hudCanvasGroup, gameOverCanvasGroup));
+        }
+        else
+        {
+            StartCoroutine(this.FadeHudElement(hudCanvasGroup, victoryScreen));
+        }
+        
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+        this.healthbar.fillAmount = 1.0f;
     }
 
     public void CollectCoin()

@@ -22,9 +22,14 @@ public class Sign : MonoBehaviour
 
     private void ToggleDialogueBox(InputAction.CallbackContext context)
     {
+
+        // if (this.canInteract)
+        // {
+        //     this.dialogueBox.SetActive(!this.dialogueBox.activeInHierarchy);
+        // }
         if (this.canInteract)
         {
-
+        
             if (this.dialogueBox.activeInHierarchy)
             {
                 this.dialogueBox.SetActive(false);

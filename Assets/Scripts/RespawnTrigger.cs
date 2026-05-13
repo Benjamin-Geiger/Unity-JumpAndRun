@@ -6,8 +6,11 @@ public class RespawnTrigger : MonoBehaviour
     
     private void OnTriggerEnter(Collider other)
     {
-        var character = other.gameObject.GetComponent<CharacterController>();
-        Respawn(character);
+        var characterController = other.gameObject.GetComponent<CharacterController>();
+        var character = other.gameObject.GetComponent<Character>();
+        character.InflictDamage(100.0f);
+        
+        //Respawn(characterController);
     }
 
     private void Respawn(CharacterController character)

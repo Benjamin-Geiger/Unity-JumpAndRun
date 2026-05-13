@@ -48,6 +48,9 @@ public class Character : MonoBehaviour
     [SerializeField] private AudioSource moveAudioSource;
     private bool moveSoundPlaying;
     
+    [Header("Respawn")]
+    [SerializeField] private Transform respawnPoint;
+    
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -96,6 +99,9 @@ public class Character : MonoBehaviour
 
     private void FixedUpdate()
     {
+        
+        if(currentHealth <= 0.0f) {return;}
+        
         HandleMovingAudio();
         Profiler.BeginSample("HandleJumping");
         this.HandleJumping();
@@ -219,5 +225,14 @@ public class Character : MonoBehaviour
             }
             
         }
+    }
+    public void GameOverRespawn()
+    {
+        UIManager.Instance.HUDonRespawn();
+        currentHealth = maxHealth;
+        var character = this.GetComponent<CharacterController>(); 
+        character.enabled = false;
+        character.transform.position = respawnPoint.position;
+        character.enabled = true;
     }
 }
