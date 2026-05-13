@@ -1,0 +1,19 @@
+{
+    "name": "JumpAndRun.Editor",
+    "rootNamespace": "",
+    "references": [
+        "NewAssembly",
+        "JumpAndRun"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

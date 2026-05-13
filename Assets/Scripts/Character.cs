@@ -1,6 +1,7 @@
 using System.Numerics;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Profiling;
 using Vector2 = UnityEngine.Vector2;
 using Vector3 = UnityEngine.Vector3;
 
@@ -96,7 +97,9 @@ public class Character : MonoBehaviour
     private void FixedUpdate()
     {
         HandleMovingAudio();
+        Profiler.BeginSample("HandleJumping");
         this.HandleJumping();
+        Profiler.EndSample();
         
         var inputMovement = moveAction.ReadValue<Vector2>();
         isMoving = inputMovement.sqrMagnitude > 0.01f;
@@ -134,7 +137,9 @@ public class Character : MonoBehaviour
             this.transform.forward = characterForward.normalized;
         }
         
+        Profiler.BeginSample("CharacterController");
         this.controller.Move(this.characterMovement);
+        Profiler.EndSample();
     }
 
     void HandleMovingAudio()
