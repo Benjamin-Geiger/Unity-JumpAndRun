@@ -6061,13 +6061,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 140121054}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 423af92064619f842bae8cfdad5a82e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
   speed: 1
-  radius: 3
+  radius: 5
   waitTime: 1.5
   zombieSound: {fileID: 8300000, guid: 9aa7b4990f174054cbcd41b21d720438, type: 3}
   rb: {fileID: 140121057}
@@ -6239,6 +6239,23 @@ CapsuleCollider:
   m_Height: 1
   m_Direction: 1
   m_Center: {x: 0, y: 0.5, z: 0}
+--- !u!114 &140121062
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 140121054}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c9058edf75540bdb50d239ef58a68a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: JumpAndRun::ZombieMovementNew
+  speed: 1
+  radius: 3
+  waitTime: 1.5
+  zombieSound: {fileID: 8300000, guid: 9aa7b4990f174054cbcd41b21d720438, type: 3}
+  rb: {fileID: 140121057}
 --- !u!4 &142265798 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4968392258349009578, guid: e0c809c810db3904c8bd6c2d2e3d4241, type: 3}
@@ -6273,7 +6290,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 0.4, z: 0.4}
+  m_Size: {x: 1, y: 0.4, z: 0.1}
   m_Center: {x: 0, y: 0.19999999, z: 0.42000017}
 --- !u!1 &165873837 stripped
 GameObject:
@@ -6473,7 +6490,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.0000005, y: 0.39999998, z: 0.4}
+  m_Size: {x: 1.0000005, y: 0.39999998, z: 0.1}
   m_Center: {x: 0, y: 0.19999999, z: 0.42000017}
 --- !u!1 &203407792
 GameObject:
@@ -8260,6 +8277,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 100056, guid: 8c53cffd52097cf4582f0a090c9a833e, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1012061157}
+    - targetCorrespondingSourceObject: {fileID: 100056, guid: 8c53cffd52097cf4582f0a090c9a833e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1012061161}
   m_SourcePrefab: {fileID: 100100000, guid: 8c53cffd52097cf4582f0a090c9a833e, type: 3}
 --- !u!1001 &371478747
 PrefabInstance:
@@ -14499,7 +14519,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.0000005, y: 0.39999998, z: 0.4}
+  m_Size: {x: 1.0000005, y: 0.39999998, z: 0.1}
   m_Center: {x: 0, y: 0.19999999, z: 0.42000017}
 --- !u!1 &561368303 stripped
 GameObject:
@@ -14530,7 +14550,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.0000005, y: 0.39999998, z: 0.4}
+  m_Size: {x: 1.0000005, y: 0.39999998, z: 0.1}
   m_Center: {x: 0, y: 0.19999999, z: 0.42000017}
 --- !u!1 &567716785 stripped
 GameObject:
@@ -14561,7 +14581,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.0000005, y: 0.39999998, z: 0.4}
+  m_Size: {x: 1.0000005, y: 0.39999998, z: 0.1}
   m_Center: {x: 0, y: 0.19999999, z: 0.42000017}
 --- !u!1 &582524045
 GameObject:
@@ -14783,6 +14803,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 100056, guid: 8c53cffd52097cf4582f0a090c9a833e, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1106861459}
+    - targetCorrespondingSourceObject: {fileID: 100056, guid: 8c53cffd52097cf4582f0a090c9a833e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1106861463}
   m_SourcePrefab: {fileID: 100100000, guid: 8c53cffd52097cf4582f0a090c9a833e, type: 3}
 --- !u!1001 &595422949
 PrefabInstance:
@@ -25330,7 +25353,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.0000005, y: 0.39999998, z: 0.4}
+  m_Size: {x: 1.0000005, y: 0.39999998, z: 0.1}
   m_Center: {x: 0, y: 0.19999999, z: 0.42000017}
 --- !u!1 &695101383 stripped
 GameObject:
@@ -25361,7 +25384,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 0.4, z: 0.4}
+  m_Size: {x: 1, y: 0.4, z: 0.1}
   m_Center: {x: 0, y: 0.19999999, z: 0.42000017}
 --- !u!1 &695596788
 GameObject:
@@ -25939,7 +25962,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.0000005, y: 0.39999998, z: 0.4}
+  m_Size: {x: 1.0000005, y: 0.39999998, z: 0.1}
   m_Center: {x: 0, y: 0.19999999, z: 0.42000017}
 --- !u!1001 &774187067
 PrefabInstance:
@@ -27427,7 +27450,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 0.4, z: 0.4}
+  m_Size: {x: 1, y: 0.4, z: 0.1}
   m_Center: {x: 0, y: 0.19999999, z: 0.42000017}
 --- !u!1 &875056564
 GameObject:
@@ -38096,6 +38119,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 100056, guid: 8c53cffd52097cf4582f0a090c9a833e, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1414503810}
+    - targetCorrespondingSourceObject: {fileID: 100056, guid: 8c53cffd52097cf4582f0a090c9a833e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1414503814}
   m_SourcePrefab: {fileID: 100100000, guid: 8c53cffd52097cf4582f0a090c9a833e, type: 3}
 --- !u!1001 &996440389
 PrefabInstance:
@@ -38315,7 +38341,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 0.4, z: 0.4}
+  m_Size: {x: 1, y: 0.4, z: 0.1}
   m_Center: {x: 0, y: 0.19999999, z: 0.42000017}
 --- !u!1001 &1005300684
 PrefabInstance:
@@ -38397,13 +38423,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1012061153}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 423af92064619f842bae8cfdad5a82e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
   speed: 1
-  radius: 3
+  radius: 5
   waitTime: 1.5
   zombieSound: {fileID: 8300000, guid: 9aa7b4990f174054cbcd41b21d720438, type: 3}
   rb: {fileID: 1012061156}
@@ -38575,6 +38601,23 @@ CapsuleCollider:
   m_Height: 1
   m_Direction: 1
   m_Center: {x: 0, y: 0.5, z: 0}
+--- !u!114 &1012061161
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1012061153}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c9058edf75540bdb50d239ef58a68a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: JumpAndRun::ZombieMovementNew
+  speed: 1
+  radius: 3
+  waitTime: 1.5
+  zombieSound: {fileID: 8300000, guid: 9aa7b4990f174054cbcd41b21d720438, type: 3}
+  rb: {fileID: 1012061156}
 --- !u!1001 &1016564361
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -44063,13 +44106,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1106861455}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 423af92064619f842bae8cfdad5a82e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
   speed: 1
-  radius: 3
+  radius: 5
   waitTime: 1.5
   zombieSound: {fileID: 8300000, guid: 9aa7b4990f174054cbcd41b21d720438, type: 3}
   rb: {fileID: 1106861458}
@@ -44241,6 +44284,23 @@ CapsuleCollider:
   m_Height: 1
   m_Direction: 1
   m_Center: {x: 0, y: 0.5, z: 0}
+--- !u!114 &1106861463
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1106861455}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c9058edf75540bdb50d239ef58a68a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: JumpAndRun::ZombieMovementNew
+  speed: 1
+  radius: 3
+  waitTime: 1.5
+  zombieSound: {fileID: 8300000, guid: 9aa7b4990f174054cbcd41b21d720438, type: 3}
+  rb: {fileID: 1106861458}
 --- !u!1001 &1110707604
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -44572,7 +44632,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 0.4, z: 0.4}
+  m_Size: {x: 1, y: 0.4, z: 0.1}
   m_Center: {x: 0, y: 0.19999999, z: 0.42000017}
 --- !u!1 &1137287153
 GameObject:
@@ -45076,7 +45136,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 0.4, z: 0.4}
+  m_Size: {x: 1, y: 0.4, z: 0.1}
   m_Center: {x: 0, y: 0.19999999, z: 0.42000017}
 --- !u!1001 &1231801235
 PrefabInstance:
@@ -45799,7 +45859,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 0.4, z: 0.4}
+  m_Size: {x: 1, y: 0.4, z: 0.1}
   m_Center: {x: 0, y: 0.19999999, z: 0.42000017}
 --- !u!1001 &1310872377
 PrefabInstance:
@@ -51375,13 +51435,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1414503806}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 423af92064619f842bae8cfdad5a82e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
   speed: 1
-  radius: 3
+  radius: 5
   waitTime: 1.5
   zombieSound: {fileID: 8300000, guid: 9aa7b4990f174054cbcd41b21d720438, type: 3}
   rb: {fileID: 1414503809}
@@ -51553,6 +51613,23 @@ CapsuleCollider:
   m_Height: 1
   m_Direction: 1
   m_Center: {x: 0, y: 0.5, z: 0}
+--- !u!114 &1414503814
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1414503806}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c9058edf75540bdb50d239ef58a68a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: JumpAndRun::ZombieMovementNew
+  speed: 1
+  radius: 3
+  waitTime: 1.5
+  zombieSound: {fileID: 8300000, guid: 9aa7b4990f174054cbcd41b21d720438, type: 3}
+  rb: {fileID: 1414503809}
 --- !u!1001 &1433070856
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -52873,7 +52950,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 0.4, z: 0.4}
+  m_Size: {x: 1, y: 0.4, z: 0.1}
   m_Center: {x: 0, y: 0.19999999, z: 0.42000017}
 --- !u!1 &1622198079
 GameObject:
@@ -53034,7 +53111,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.0000005, y: 0.39999998, z: 0.4}
+  m_Size: {x: 1.0000005, y: 0.39999998, z: 0.1}
   m_Center: {x: 0, y: 0.19999999, z: 0.42000017}
 --- !u!1 &1650075635 stripped
 GameObject:
@@ -53065,7 +53142,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 0.4, z: 0.4}
+  m_Size: {x: 1, y: 0.4, z: 0.1}
   m_Center: {x: 0, y: 0.19999999, z: 0.42000017}
 --- !u!4 &1671096294 stripped
 Transform:
@@ -53352,7 +53429,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 0.4, z: 0.4}
+  m_Size: {x: 1, y: 0.4, z: 0.1}
   m_Center: {x: 0, y: 0.19999999, z: 0.42000017}
 --- !u!1 &1688679675 stripped
 GameObject:
@@ -59196,7 +59273,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.0000005, y: 0.39999998, z: 0.4}
+  m_Size: {x: 1.0000005, y: 0.39999998, z: 0.1}
   m_Center: {x: 0, y: 0.19999999, z: 0.42000017}
 --- !u!1001 &1861273953
 PrefabInstance:
@@ -60213,6 +60290,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 100056, guid: 8c53cffd52097cf4582f0a090c9a833e, type: 3}
       insertIndex: -1
       addedObject: {fileID: 140121058}
+    - targetCorrespondingSourceObject: {fileID: 100056, guid: 8c53cffd52097cf4582f0a090c9a833e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 140121062}
   m_SourcePrefab: {fileID: 100100000, guid: 8c53cffd52097cf4582f0a090c9a833e, type: 3}
 --- !u!1001 &1964743637
 PrefabInstance:
@@ -65756,7 +65836,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.0000005, y: 0.39999998, z: 0.4}
+  m_Size: {x: 1.0000005, y: 0.39999998, z: 0.1}
   m_Center: {x: 0, y: 0.19999999, z: 0.42000017}
 --- !u!1001 &2064144885
 PrefabInstance:
@@ -71679,7 +71759,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.0000005, y: 0.39999998, z: 0.4}
+  m_Size: {x: 1.0000005, y: 0.39999998, z: 0.1}
   m_Center: {x: 0, y: 0.19999999, z: 0.42000017}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
