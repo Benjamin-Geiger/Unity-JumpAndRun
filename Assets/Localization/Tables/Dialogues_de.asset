@@ -19,7 +19,34 @@ MonoBehaviour:
     m_Items: []
   m_TableData:
   - m_Id: 108824494080
-    m_Localized: Hallo Ich bin Schild. Geh wo Pfeil.
+    m_Localized: "Dieses Alpaka sollte eigentlick spucken, aber der Entwickler war
+      zu faul das zu implementieren.\nDu kannst auf seinen R\xFCcken springen um
+      es zu zerquentschen."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8724755460939776
+    m_Localized: "Folge dem Pfeil. Sammle so viele M\xFCnzen wie m\xF6glich und versuche
+      zum Ende zu kommen."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8726060254388224
+    m_Localized: "Achtung! Das Zombie kann dich t\xF6ten. Gehe von hinten an es heran
+      und springe auf seinen Kopf."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8729890853511168
+    m_Localized: "Die Zombiehorde hat einige M\xFCnzen gestohlen. Versuche sie zur\xFCck
+      zu holen."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8730726597943296
+    m_Localized: "Fast geschafft. Versuche nicht zerst\xFCckelt zu werden :)"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8731772435062784
+    m_Localized: "Dieses Alpaka sollte eigentlick spucken, aber der Entwickler war
+      zu faul das zu implementieren.\r\nDu kannst auf seinen R\xFCcken springen um
+      es zu zerquentschen."
     m_Metadata:
       m_Items: []
   references:

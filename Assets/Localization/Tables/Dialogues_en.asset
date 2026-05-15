@@ -19,7 +19,35 @@ MonoBehaviour:
     m_Items: []
   m_TableData:
   - m_Id: 108824494080
-    m_Localized: Hello I am a Sign. Follow arrow pls <3
+    m_Localized: 'This Alpaca is supposed to spit at you, but the Developer was to
+      lazy to implement that.
+
+      You can jump on it''s back to squash it though.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8724755460939776
+    m_Localized: Follow the arrow. Collect as many coins as posible and try to make
+      it to the end.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8726060254388224
+    m_Localized: Careful! The zombie can kill you. Approach it from the back and
+      jump on it's head.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8729890853511168
+    m_Localized: The zombie horde has stolen some coins. Try to get them back.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8730726597943296
+    m_Localized: Almost there. Try to not get chopped up :)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8731772435062784
+    m_Localized: 'This Alpaca is supposed to spit at you, but the Developer was to
+      lazy to implement that.
+
+      You can jump on it''s back to squash it though.'
     m_Metadata:
       m_Items: []
   references:

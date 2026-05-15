@@ -46,13 +46,13 @@ public class Sign : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player")) return;
+        if (!other.CompareTag("Player")) return;
         this.canInteract = true;
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Player")) return;
+        if (!other.CompareTag("Player")) return;
         this.canInteract = false;
         this.dialogueBox.SetActive(false);
     }
